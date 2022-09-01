@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rule_team_leader" model="ir.rule">
+        <field name="name">Team Leader View Members</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="groups" eval="[(4, ref('training.group_sale_team_leader'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="domain_force">[('user_id.sale_team_id.user_id.id', '=', user.id)]</field>
+    </record>
+
+</odoo>
