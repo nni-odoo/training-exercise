@@ -9,6 +9,9 @@
             <xpath expr="//field[@name='function']" position="before">
                     <field name="date_of_birth" />
             </xpath>
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="string">Mobile No.</attribute>
+            </xpath>
         </field>
     </record>
 
