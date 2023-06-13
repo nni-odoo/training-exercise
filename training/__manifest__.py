@@ -9,7 +9,7 @@
     'description': """
         Training
     """,
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale_management'],
     'data': [
         "views/sale_order.xml",
     ],
