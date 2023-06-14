@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+     <!-- Exercise 2 -->
     <record id="group_sale_team_leader" model="res.groups">
         <field name="name">User: Team Leader</field>
         <field name="category_id" ref="base.module_category_sales_sales" />

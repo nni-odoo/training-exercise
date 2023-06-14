@@ -9,11 +9,12 @@
     'description': """
         Training
     """,
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale', 'purchase'],
     'data': [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "security/ir_rule.xml",
+        "data/data.xml",
     ],
     'license': 'LGPL-3',
 }
