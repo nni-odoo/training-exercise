@@ -9,9 +9,12 @@
     'description': """
         Training
     """,
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale', 'portal', 'website'],
     'data': [
         "views/template.xml",
+        "views/portal_sale_template.xml",
+        "views/sample_template.xml",
+        "views/sale.xml",
     ],
     'license': 'LGPL-3',
 }

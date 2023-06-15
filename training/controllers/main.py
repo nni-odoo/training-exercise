@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 import datetime
-from odoo import http, api, SUPERUSER_ID
+from odoo import http, SUPERUSER_ID
 from odoo.http import request
 import json
 
 class Controllers(http.Controller):
 
-    @http.route('/hello', type='http')
+    @http.route('/hello', auth='public')
     def hello(self, **kw):
         return "Hello, World!"
 
-    @http.route('/hello_json', type='json')
+    @http.route('/hello_json')
     def hello_json(self, **kw):
         return json.dumps({"data": "Hello, World!"})
 
@@ -30,3 +30,25 @@ class Controllers(http.Controller):
     @http.route('/index')
     def index(self, **kw):
         return request.render("training.total_amount")
+
+    @http.route('/test', type='http', auth='public')
+    def test(self, **kwargs):
+        data = "test"
+        return request.make_response(data)
+
+    @http.route("/json_data", auth='none')
+    def json_data(self, **values):
+        headers = {'Content-Type': 'application/json'}
+        body = {'x': 1, 'y': 2}
+
+        return request.make_response(json.dumps(body), headers)
+
+    @http.route("/start")
+    def start(self, **kw):
+        vals = {'name': 'test', 'age': 20}
+        return request.render("training.example_template", vals)
+
+    @http.route("/sale/<int:sale_id>")
+    def sale(self, sale_id, **kw):
+        sale = request.env['sale.order'].browse(sale_id)
+        return request.render("training.sale_web", {'order': sale})
