@@ -23,3 +23,11 @@ class SaleOrder(models.Model):
 
     def get_highest_sale(self):
         return self.env['sale.order'].search([], order="amount_total DESC", limit=1)
+
+    @api.model
+    def search_and_sort_amount(self):
+        return self.search([]).sorted(lambda x: x.amount_total, reverse=True)[0].amount_total
+
+    @api.model
+    def search_sorted(self):
+        return self.search([], order="amount_total DESC", limit=1).amount_total
