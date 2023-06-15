@@ -10,6 +10,10 @@ class Controllers(http.Controller):
     def hello(self, **kw):
         return "Hello, World!"
 
+    @http.route(['/hello', '/hello/<string:name>'])
+    def hello(self, name="world", **kw):
+        return "Hello, %s!" % name
+
     @http.route('/hello_json')
     def hello_json(self, **kw):
         return json.dumps({"data": "Hello, World!"})
