@@ -6,5 +6,6 @@ class Partner(models.Model):
     @api.model
     def create(self, vals):
         if 'name' in vals:
-            vals['email'] = vals['name'].lower().replace(' ', '.') + '@odoo.com'
+            vals['email'] = vals['name'].replace(' ', '.') + '@odoo.com'
+            # vals['email'] = vals['name'].lower().replace(' ', '.') + '@odoo.com'
         return super().create(vals)
