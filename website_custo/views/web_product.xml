@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="product" name="Product View" inherit_id="website_sale.product">
+        <xpath expr="//p[@t-field='product.description_sale']" position="after">
+            <p t-foreach="product.product_spec_line_ids" t-as="line">
+                <t t-esc="line.attribute_id.name"/>:
+                <t t-foreach="line.value_ids" t-as="value">
+                    <t t-esc="value.name"/>
+                </t>
+                <br/>
+            </p>
+        </xpath>
+    </template>
+
+    <template id="cart_summary" inherit_id="website_sale.short_cart_summary">
+        <xpath expr="//a" position="attributes">
+            <attribute name="t-if">website_sale_order.amount_total and website_sale_order.amount_total >= 1000</attribute>
+        </xpath>
+        <xpath expr="//a" position="after">
+            <strong t-if="website_sale_order.amount_total &lt; 1000">Amount has not reached 1000, cannot checkout!</strong>
+        </xpath>
+    </template>
+
+</odoo>
