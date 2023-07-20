@@ -5,6 +5,7 @@ class SaleOrder(models.Model):
 
     total_items = fields.Integer("Total Items", compute="_compute_total_items")
     expense_level = fields.Selection(selection=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], compute="_compute_expense_level")
+    customer_phone = fields.Char(related="partner_id.phone")
 
     @api.depends('order_line.product_uom_qty')
     def _compute_total_items(self):
@@ -20,3 +21,9 @@ class SaleOrder(models.Model):
                 rec.expense_level = 'medium'
             elif rec.amount_total > 100:
                 rec.expense_level = 'high'
+
+# SHELL STUFF
+# env['sale.order'].search([])
+# env['sale.order'].search([('amount_total', '>', 500)])
+# env['sale.order'].search([]).filtered(lambda x: x.state =='draft')
+# env['sale.order'].search([]).partner_id
