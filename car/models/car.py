@@ -11,3 +11,6 @@ class Car(models.Model):
     picture = fields.Binary()
     price = fields.Float()
     user_id = fields.Many2one('res.partner')
+
+    def add_miles(self):
+        self.miles += 1000

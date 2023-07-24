@@ -17,6 +17,9 @@
         <field name="model">car.car</field>
         <field name="arch" type="xml">
             <form string="">
+                <header>
+                    <button name="add_miles" type="object" string="Add Miles"/>
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>

@@ -15,6 +15,9 @@
             <xpath expr="//header" position="inside">
                 <button name="set_qty" type="object" string="Set Quantity" />
             </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="class">text-success</attribute>
+            </xpath>
         </field>
     </record>
 

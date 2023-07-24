@@ -12,6 +12,11 @@
             <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="class">text-success</attribute>
             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="Signature">
+                    <field name="signature"/>
+                </page>
+            </xpath>
         </field>
     </record>
 
