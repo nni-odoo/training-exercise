@@ -9,10 +9,11 @@
     'description': """
         Training
     """,
-    'depends': ['base', 'contacts'],
+    'depends': ['base', 'contacts', 'sale_management'],
     'data': [
         "views/res_partner.xml",
         "views/report_res_partner.xml",
+        "views/report_sale_order.xml",
     ],
     'license': 'LGPL-3',
 }
