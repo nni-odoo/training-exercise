@@ -6,9 +6,9 @@ import json
 
 class Controllers(http.Controller):
 
-    @http.route('/hello', auth='public')
-    def hello(self, **kw):
-        return "Hello, World!"
+    # @http.route('/hello', auth='public')
+    # def hello(self, **kw):
+    #     return "Hello, World!"
 
     @http.route(['/hello', '/hello/<string:name>'])
     def hello(self, name="world", **kw):
@@ -56,3 +56,7 @@ class Controllers(http.Controller):
     def sale(self, sale_id, **kw):
         sale = request.env['sale.order'].browse(sale_id)
         return request.render("training.sale_web", {'order': sale})
+
+    @http.route('/create/partner', methods=['POST'], type='http', auth='public', website=True, csrf=False)
+    def create_partner(self, name):
+        request.env['res.partner'].sudo().create({'name': name})
