@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Exercise 3 -->
     <template id="portal_my_orders" inherit_id="sale.portal_my_orders">
         <xpath expr="//thead/tr/th" position="after">
             <th>Customer</th>

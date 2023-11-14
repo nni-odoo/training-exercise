@@ -6,25 +6,20 @@ import json
 
 class Controllers(http.Controller):
 
-    # @http.route('/hello', auth='public')
-    # def hello(self, **kw):
-    #     return "Hello, World!"
-
+    # Exercise 1.1 & 1.2
     @http.route(['/hello', '/hello/<string:name>'])
     def hello(self, name="world", **kw):
         return "Hello, %s!" % name
 
-    @http.route('/hello_json')
-    def hello_json(self, **kw):
-        return json.dumps({"data": "Hello, World!"})
+    # Exercise 1.3
+    @http.route("/json_data", auth='none')
+    def json_data(self, **values):
+        headers = {'Content-Type': 'application/json'}
+        body = {'x': 1, 'y': 2}
 
-    @http.route("/sale_total")
-    def sale_total(self, date=None, **kw):
-        if request.httprequest.method == "POST":
-            return request.redirect('/total/' + date)
-        sales = request.env['sale.order'].search([])
-        return "%s" % sum(sales.mapped('amount_total'))
+        return request.make_response(json.dumps(body), headers)
 
+    # Exercise 1.4
     @http.route("/total/<string:date>")
     def sale_total_at_date(self, date, **kw):
         parsed_date = datetime.datetime.strptime(date, "%Y-%m-%d")
@@ -35,23 +30,13 @@ class Controllers(http.Controller):
     def index(self, **kw):
         return request.render("training.total_amount")
 
-    @http.route('/test', type='http', auth='public')
-    def test(self, **kwargs):
-        data = "test"
-        return request.make_response(data)
-
-    @http.route("/json_data", auth='none')
-    def json_data(self, **values):
-        headers = {'Content-Type': 'application/json'}
-        body = {'x': 1, 'y': 2}
-
-        return request.make_response(json.dumps(body), headers)
-
+    # Exercise 2.1
     @http.route("/start")
     def start(self, **kw):
         vals = {'name': 'test', 'age': 20}
         return request.render("training.example_template", vals)
 
+    # Exercise 2.2
     @http.route("/sale/<int:sale_id>")
     def sale(self, sale_id, **kw):
         sale = request.env['sale.order'].browse(sale_id)

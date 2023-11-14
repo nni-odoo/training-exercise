@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Exercise 2.2 -->
     <template id="sale_web" name="Sale Website">
         <t t-call="web.html_container">
             <div class="container-fluid">
