@@ -17,3 +17,6 @@ class ResPartner(models.Model):
     def write(self, vals):
         raise UserError(vals.items())
         return super().write(vals)
+
+    def hello(self):
+        print("Helo world from %s" % self.name)

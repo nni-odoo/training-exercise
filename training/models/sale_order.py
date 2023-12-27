@@ -7,10 +7,10 @@ class SaleOrder(models.Model):
     expense_level = fields.Selection(selection=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')], compute="_compute_expense_level")
     customer_phone = fields.Char(related="partner_id.phone")
 
-    @api.depends('order_line.product_uom_qty')
+    @api.depends('order_line')
     def _compute_total_items(self):
         for rec in self:
-            rec.total_items = sum(rec.order_line.mapped('product_uom_qty'))
+            rec.total_items = len(self.order_line)
 
     @api.depends('amount_total')
     def _compute_expense_level(self):
@@ -25,5 +25,7 @@ class SaleOrder(models.Model):
 # SHELL STUFF
 # env['sale.order'].search([])
 # env['sale.order'].search([('amount_total', '>', 500)])
+# env['sale.order'].search([('amount_total', '>', 500)]).sorted(lambda x: x.amount_total)
+# env['sale.order'].search([('amount_total', '>', 500)], order='amount_total ASC')
 # env['sale.order'].search([]).filtered(lambda x: x.state =='draft')
 # env['sale.order'].search([]).partner_id
