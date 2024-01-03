@@ -19,6 +19,9 @@
             <form string="">
                 <header>
                     <button name="add_miles" type="object" string="Add Miles"/>
+                    <button name="show_cars" type="object" string="CARS"/>
+                    <button name="show_others" type="object" string="Others"/>
+                    <button name="show_another" type="object" string="Another"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
