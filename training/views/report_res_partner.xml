@@ -80,7 +80,7 @@
                             <tr t-foreach="o.sale_order_ids.sorted(lambda x: x.amount_total, reverse=True)" t-as="order">
                                 <td><span t-field="order.name"/></td>
                                 <td><span t-field="order.date_order"/></td>
-                                <td><span t-field="order.amount_total"/></td>
+                                <td><span t-field="order.amount_total" t-att-style="'color: red' if order.amount_total > 1000 else ''"/></td>
                             </tr>
                         </tbody>
                     </table>
